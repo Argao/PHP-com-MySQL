@@ -1,4 +1,4 @@
--- Active: 1713222171639@@127.0.0.1@3306@db_games
+-- Active: 1715630353002@@127.0.0.1@3306@db_games
 CREATE DATABASE db_games DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
