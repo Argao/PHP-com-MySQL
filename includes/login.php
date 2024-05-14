@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION['user'])){    
-        $_SESSION['user'] = "gustavo";
+        $_SESSION['user'] = "";
         $_SESSION['nome'] = "";
         $_SESSION['tipo'] = "";
     }
@@ -21,6 +21,12 @@
             $c .= chr($letra);
         }
         return $c;
+    }
+
+    function logout(){
+        unset($_SESSION['user']);
+        unset($_SESSION['nome']);
+        unset($_SESSION['tipo']);
     }
 
     // $original = 'teste';
