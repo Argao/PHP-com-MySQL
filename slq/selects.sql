@@ -1,3 +1,4 @@
+-- Active: 1715630353002@@127.0.0.1@3306@db_games
 SELECT j.cod, j.nome, g.genero,p.produtora,j.descricao,j.nota,j.capa FROM jogos j
 JOIN generos g ON j.genero = g.cod
 JOIN produtoras p ON j.produtora = p.cod;

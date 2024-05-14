@@ -55,6 +55,8 @@
         }  
     }
 
+
+
     // $original = 'teste';
     // echo "$original --- ";
     // echo cripto($original)." --- ";

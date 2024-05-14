@@ -8,7 +8,7 @@
         </tr>
         <tr>
             <td><label for="senha">Senha: </label></td>
-            <td><input type="password" name="senha" id="senha" autocomplete="current-password" size="10" maxlength="8"></td>
+            <td><input type="password" name="senha" id="senha" autocomplete="current-password" size="10" maxlength="10"></td>
         </tr>
         <tr>
             <td><input type="submit" value="Entrar"></td>
