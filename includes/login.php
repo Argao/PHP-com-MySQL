@@ -29,6 +29,32 @@
         unset($_SESSION['tipo']);
     }
 
+    function is_logado(){
+        return !empty($_SESSION['user']);
+    }
+
+    function is_admin(){
+        $t = $_SESSION['tipo'] ?? "";
+        if(is_null($t)){
+            return false;
+        }else if($t == "admin"){
+            return true;
+        }else{
+            return false;
+        }          
+    }
+
+    function is_editor(){
+        $t = $_SESSION['tipo'] ?? "";
+        if(is_null($t)){
+            return false;
+        }else if($t == "editor"){
+            return true;
+        }else{
+            return false;
+        }  
+    }
+
     // $original = 'teste';
     // echo "$original --- ";
     // echo cripto($original)." --- ";
