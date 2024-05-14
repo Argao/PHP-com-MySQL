@@ -13,7 +13,14 @@
         require_once "includes/funcoes.php";
     ?>
     <main id="corpo">
+        <?php include_once "topo.php"?>
         <h1>Escolha seu jogo</h1>
+        <form action="idex.php" method="get" id="busca">
+            Ordenar: Nome | Produtora | Nota Alta | Nota Baixa | 
+            <label for="c">Buscar:</label>
+            <input type="text" name="c" id="c" seize="10" maxlength="40">
+            <input type="submit" value="Ok">
+        </form>
         <table class="listagem">
             <?php 
             $q = "select j.cod, j.nome, g.genero, p.produtora, j.capa from jogos j join generos g on j.genero = g.cod join produtoras p on j.produtora = p.cod ";
