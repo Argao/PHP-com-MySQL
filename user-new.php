@@ -33,16 +33,19 @@
                     $tipo = $_POST['tipo'] ?? null;
                     
                     if(validaNovoUsuario($usuario,$nome,$senha1,$senha2,$tipo,$banco)){
-                        echo "Tudo certo";
-                    }else{
-                        echo "Algo deu errado";
-                    }
-                }                
+                        $senha = gerarHash($senha1);
+                        $q = "INSERT INTO usuarios (usuario,nome,senha,tipo) VALUES ('$usuario','$nome','$senha','$tipo')";
+                        if($banco->query($q)){
+                            echo msg_sucesso("Usuário $nome cadastrado com sucesso!");
+                        }else{
+                            echo msg_erro('Não foi possível cadastrar o usuário!');
+                        }
+                    }                
+                }
             }
             echo voltar();
             $banco->close();
         ?>
     </main>
-    <
 </body>
 </html>        
