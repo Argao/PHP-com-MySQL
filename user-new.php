@@ -32,7 +32,7 @@
                     $senha2 = $_POST['senha2'] ?? null;
                     $tipo = $_POST['tipo'] ?? null;
                     
-                    if(validaNovoUsuario($usuario,$nome,$senha1,$senha2,$tipo)){
+                    if(validaNovoUsuario($usuario,$nome,$senha1,$senha2,$tipo,$banco)){
                         echo "Tudo certo";
                     }else{
                         echo "Algo deu errado";
@@ -40,8 +40,9 @@
                 }                
             }
             echo voltar();
+            $banco->close();
         ?>
     </main>
-    <?php require "rodape.php"; ?>
+    <
 </body>
 </html>        

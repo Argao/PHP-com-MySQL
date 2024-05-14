@@ -18,6 +18,7 @@
             logout();
             echo msg_sucesso("Deslogado com sucesso!");
             echo voltar();
+            $banco->close();
         ?>
     </main>
 </body>

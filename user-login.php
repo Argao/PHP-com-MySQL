@@ -52,8 +52,9 @@
                 }
             }
             echo voltar();
+            $banco->close();
         ?>
-
+        
     </main>
 </body>
 </html>        
