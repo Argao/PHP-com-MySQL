@@ -17,15 +17,15 @@
     <main id="corpo">
         <?php include_once "topo.php"?>
         <h1>Escolha seu jogo</h1>
-        <form action="index.php" method="get" id="busca" >
+        <form action="index.php" method="get" id="busca" autocomplete="on">
             Ordenar:
-            <a href="index.php?o=n">Nome |</a>
-            <a href="index.php?o=p">Produtora |</a>
-            <a href="index.php?o=n1">Nota Alta |</a>
-            <a href="index.php?o=n2">Nota Baixa | </a>
+            <a href="index.php?o=n&c=<?php echo $chave;?>">Nome |</a>
+            <a href="index.php?o=p&c=<?php echo $chave;?>">Produtora |</a>
+            <a href="index.php?o=n1&c=<?php echo $chave;?>">Nota Alta |</a>
+            <a href="index.php?o=n2&c=<?php echo $chave;?>">Nota Baixa | </a>
             <a href="index.php">Mostrar Todos |</a>
             <label for="c">Buscar:</label>
-            <input type="text" name="c" id="c" seize="10" maxlength="40" > 
+            <input type="text" name="c" id="c" seize="10" maxlength="40" value="<?php echo $chave;?>" autocomplete="on"> 
             <input type="submit" value="Ok">
         </form>
         <table class="listagem">
