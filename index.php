@@ -5,23 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Título da Página</title>
     <link rel="stylesheet" href="estilos/estilo.css">
-    <?php 
-        function thumb($arq){
-            $caminho = "fotos/$arq";
-            if(is_null($arq) || !file_exists($caminho)){
-                return "fotos/indisponivel.png";
-            }else{
-                return $caminho;
-            }
-        }
-    ?>
 
 </head>
 <body>
     <?php 
         require_once "includes/banco.php";
         require_once "includes/funcoes.php";
-
     ?>
     <main id="corpo">
         <h1>Escolha seu jogo</h1>
@@ -48,6 +37,6 @@
             ?>
         </table>
     </main>
-    <?php $banco->close();?>
+    <?php include_once "rodape.php"?>
 </body>
 </html>

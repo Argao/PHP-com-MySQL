@@ -35,7 +35,14 @@ body{
 .detalhes{
     width: 100%;
 }
+.detalhes td{
+    padding: 10px;
+    vertical-align: top;
+}
 
 .mini{
     width: 50px;
+}
+.full{
+    height: 400px;
 }
