@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="Styles/style.css">
 </head>
 <body>
-    <div id="corpo">
+    <main id="corpo">
         <h1>Olá</h1>
-    </div>
+</main>
 </body>
 </html>

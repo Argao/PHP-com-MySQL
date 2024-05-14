@@ -1,7 +1,7 @@
+@charset "UTF-8";
 body{
     background-color: #ddd;
     font-family: Tahoma, Geneva, Verdana, sans-serif;
-
 }
 #corpo{
     width: 800px;
@@ -30,6 +30,10 @@ body{
 }
 .listagem td:nth-child(3){
     width: 90px;
+}
+
+.detalhes{
+    width: 100%;
 }
 
 .mini{
