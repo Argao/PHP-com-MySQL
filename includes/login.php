@@ -1,4 +1,12 @@
 <?php 
+    session_start();
+
+    if(!isset($_SESSION['user'])){    
+        $_SESSION['user'] = "gustavo";
+        $_SESSION['nome'] = "";
+        $_SESSION['tipo'] = "";
+    }
+
     function gerarHash($senha){
         return password_hash(cripto($senha),PASSWORD_DEFAULT);
     }
@@ -15,9 +23,8 @@
         return $c;
     }
 
-    $original = 'estudonauta';
-    echo "$original --- ";
-    echo cripto($original)." --- ";
-    echo gerarHash($original);
-    echo testarHash($original,'$2y$10$1Jq3y4iGY1e21kl86Q/fdeHloQiAFzjVyuOPmTfTHDVL41drjRycS')?"SIM": "NAO";
-?>
+    // $original = 'teste';
+    // echo "$original --- ";
+    // echo cripto($original)." --- ";
+    // echo gerarHash($original);
+  

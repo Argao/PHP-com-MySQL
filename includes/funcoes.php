@@ -24,4 +24,3 @@
             $resp = "<div class='aviso msg'><span class='material-symbols-outlined'>info</span>$m</div>";
             return $resp;
         }
-?>

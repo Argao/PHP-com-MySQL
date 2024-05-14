@@ -87,3 +87,8 @@ header{
     'GRAD' 0,
     'opsz' 24
 }
+.pequeno{
+    font-size:  8pt;
+    text-align: right;
+}
+
