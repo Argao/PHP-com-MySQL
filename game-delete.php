@@ -23,6 +23,7 @@
         if (!is_admin()) {
             echo msg_erro('Você não tem permissão para acessar esta página!');
         } else {
+            $capa = $banco->query("SELECT capa FROM jogos WHERE cod = $cod")->fetch_object()->capa;
             
             
             if(!isset($_POST['confirmacao'])){
@@ -34,6 +35,10 @@
                     $q = "DELETE FROM jogos WHERE cod = '$cod'";
                     if($banco->query($q)){
                         echo msg_sucesso("Jogo deletado com sucesso!");
+                        if($capa != ""){
+                            unlink("fotos/$capa");
+                            echo msg_sucesso("Imagem de capa excluída com sucesso!");
+                        }
                     }else{
                         echo msg_erro("Não foi possível deletar o jogo!");
                     }

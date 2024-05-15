@@ -70,7 +70,7 @@
                             if(is_admin()){
                                 echo "<td>
                                 <a href='game-new.php'><span class='material-symbols-outlined'>add_circle</span></a>  
-                                <a href='index.php'><span class='material-symbols-outlined'>edit</span></a> 
+                                <a href='game-edit.php?cod=$reg->cod'><span class='material-symbols-outlined'>edit</span></a> 
                                 <a href='game-delete.php?cod=$reg->cod'><span class='material-symbols-outlined'>delete</span></a>";    
                             }elseif(is_editor()){
                                 echo "<td><a href='index.php'><span class='material-symbols-outlined'>edit</span></a> ";

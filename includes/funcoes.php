@@ -97,6 +97,7 @@
 
 
         function validaImagem(){
+            echo 'entrou3';
             $target_dir = "fotos/";
             $target_file = $target_dir . basename($_FILES["capa"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

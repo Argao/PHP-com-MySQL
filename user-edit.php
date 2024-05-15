@@ -52,7 +52,7 @@
                 }    
             }  
         ?>
-        <?php echo voltar();?>
+        <?php echo voltar('index.php');?>
     </main>
     <?php require_once"rodape.php";?>
 </body>
