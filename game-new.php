@@ -31,27 +31,25 @@
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
                 // Check if image file is a actual image or fake image
-                if (isset($_POST["submit"])) {
-                    $check = getimagesize($_FILES["capa"]["tmp_name"]);
-                    if ($check !== false) {
-                        echo "File is an image - " . $check["mime"] . ".";
-                        $uploadOk = 1;
-                    } else {
-                        echo "File is not an image.";
-                        $uploadOk = 0;
-                    }
+
+                $check = getimagesize($_FILES["capa"]["tmp_name"]);
+                if ($check !== false) {
+                    $uploadOk = 1;
+                } else {
+                    echo msg_erro("O arquivo não é uma imagem válida.");
+                    $uploadOk = 0;
                 }
-                var_dump(getimagesize($_FILES["capa"]["tmp_name"]));
+                
 
                 // Check if file already exists
                 if (file_exists($target_file)) {
-                    echo "Sorry, file already exists.";
+                    echo msg_erro("O arquivo já existe.");
                     $uploadOk = 0;
                 }
 
                 // Check file size
                 if ($_FILES["capa"]["size"] > 500000) {
-                    echo "Sorry, your file is too large.";
+                    echo msg_erro("O arquivo é muito grande.");
                     $uploadOk = 0;
                 }
 
@@ -60,20 +58,32 @@
                     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                     && $imageFileType != "gif"
                 ) {
-                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+
+                    echo msg_erro("Apenas arquivos JPG, JPEG, PNG e GIF são permitidos.");
                     $uploadOk = 0;
                 }
 
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
-                    echo "Sorry, your file was not uploaded.";
+                    echo msg_erro("O arquivo não foi enviado.");
                     // if everything is ok, try to upload file
                 } else {
+                    
                     if (move_uploaded_file($_FILES["capa"]["tmp_name"], $target_file)) {
-                        echo "The file " . htmlspecialchars(basename($_FILES["capa"]["name"])) . " has been uploaded.";
+                        $nome = $_POST['nome'];
+                        $descricao = $_POST['descricao'];
+                        $genero = $_POST['genero'];
+                        $produtora = $_POST['produtora'];
+                        $nota = $_POST['nota'];
+                        $capa = basename($_FILES["capa"]["name"]);
+                        $sql = "INSERT INTO jogos (nome, descricao, genero, capa, produtora, nota ) VALUES ('$nome','$descricao','$genero','$capa','$produtora','$nota')";
+                        $banco->query($sql);
+                        echo msg_sucesso("Jogo cadastrado com sucesso!");
+
                     } else {
                         echo "Sorry, there was an error uploading your file.";
                     }
+                    
                 }
             }
         }
