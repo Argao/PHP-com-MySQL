@@ -25,7 +25,9 @@
                         }    
                     ?>
                 </select>
+                <a href="genero-new.php">Novo Gênero</a>
             </td>
+
         </tr>
         <tr>
             <td><label for="produtora">Produtora </label></td>
@@ -47,6 +49,10 @@
                         }    
                     ?>
                 </select>
+                <a href="produtora-new.php">Nova Produtora</a>
+            </td> 
+
+            
         </tr>
 
         <tr>

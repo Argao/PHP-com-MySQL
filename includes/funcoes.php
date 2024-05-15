@@ -1,15 +1,15 @@
 <?php 
         function thumb($arq){
             $caminho = "fotos/$arq";
-            if(is_null($arq) || !file_exists($caminho)){
+            if(is_null($arq) || !file_exists($caminho) || $arq == ""){
                 return "fotos/indisponivel.png";
             }else{
                 return $caminho;
             }
         }
 
-        function voltar(){
-            return "<a href='index.php'><span class='material-symbols-outlined'>arrow_back</span></a>";
+        function voltar($arquivo){
+            return "<a href='$arquivo'><span class='material-symbols-outlined'>arrow_back</span></a>";
         }
 
         function msg_sucesso($m){
@@ -75,6 +75,7 @@
                 return false;
             }
             if($busca->num_rows > 0){
+                echo msg_erro('Usuário já cadastrado!');
                 return false;
             }
             return true;
@@ -96,7 +97,6 @@
 
 
         function validaImagem(){
-            echo "entrou";
             $target_dir = "fotos/";
             $target_file = $target_dir . basename($_FILES["capa"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -138,6 +138,26 @@
         function verificaOFormatoDoArquivo($imageFileType){
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif") {
                 echo msg_erro("Apenas arquivos JPG, JPEG, PNG e GIF são permitidos.");
+                return false;
+            }
+            return true;
+        }
+
+        function validaProdutora($nome,$pais,$banco){
+            if(procuraProcutoraNobanco($nome,$banco)){
+                return true;
+            }
+            return false;
+        }
+
+        function procuraProcutoraNobanco($nome,$banco){
+            $q = "SELECT * FROM produtoras WHERE LOWER(produtora) = LOWER('$nome')";
+            $busca = $banco->query($q);
+            if(!$busca){
+                return false;
+            }
+            if($busca->num_rows > 0){
+                echo msg_erro('Produtora já cadastrada!');
                 return false;
             }
             return true;

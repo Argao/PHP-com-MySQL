@@ -18,12 +18,14 @@
     <main id="corpo">
 
         <?php
+        $volta = 'index.php';
         if (!is_admin()) {
             echo msg_erro('Você não tem permissão para acessar esta página!');
         } else {
             if (!isset($_POST['nome'])) {
                 require "game-new-form.php";
             } else {
+                $volta = 'game-new.php';
                 $nome = $_POST['nome'] ?? null;
                 $descricao = $_POST['descricao'] ?? null;
                 $genero = $_POST['genero'] ?? null;
@@ -54,7 +56,7 @@
 
             }
         }
-        echo voltar();
+        echo voltar($volta);
         ?>
     </main>
     <?php require_once "rodape.php"; ?>

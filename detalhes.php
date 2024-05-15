@@ -49,7 +49,7 @@
                 }
             ?>
         </table>
-        <?php echo voltar();?>
+        <?php echo voltar('index.php');?>
     </main>
     <?php include_once "rodape.php"?>
 </body>
