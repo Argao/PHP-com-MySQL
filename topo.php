@@ -7,7 +7,7 @@
         echo "<a href='user-edit.php'>Meus Dados</a> | ";
         if(is_admin()){
             echo "<a href='user-new.php'>Novo usuário</a> | ";
-            echo "Novo Jogo | ";
+            echo "<a href='game-new.php'>Novo Jogo</a> | ";
         }
         echo "<a href='user-logout.php'>Sair</a>";
     }
