@@ -44,8 +44,8 @@
                 }
             }
             echo voltar();
-            $banco->close();
         ?>
     </main>
+    <?php require_once"rodape.php"; ?>
 </body>
 </html>        

@@ -9,6 +9,7 @@
 <body>
     <main id="corpo">
         <h1>Olá</h1>
-</main>
+    </main>
+    <?php require_once"rodape.php"; ?>
 </body>
 </html>
