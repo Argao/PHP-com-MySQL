@@ -62,7 +62,7 @@
                         echo "<tr><td>Nenhum registro encontrado";
                     } else{
                         while ($reg=$busca->fetch_object()) {
-                            $t = thumb($reg->capa);
+                            $t = thumb($reg->capa);//verifica se o arquivo existe
                             echo "<tr><td><img src='$t' class='mini' />";
                             echo "<td><a href='detalhes.php?cod=$reg->cod'>$reg->nome</a>";
                             echo "[$reg->genero]";

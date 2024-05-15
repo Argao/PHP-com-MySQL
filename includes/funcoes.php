@@ -95,4 +95,59 @@
         }
 
 
+        function validaImagem(){
+            echo "entrou";
+            $target_dir = "fotos/";
+            $target_file = $target_dir . basename($_FILES["capa"]["name"]);
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            
+            if (verificaSeImagemEhValida() && verificaOFormatoDoArquivo($imageFileType) && verificaOTamanhoDoArquivo() && verificaSeArquivoJaExiste($target_file)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        
+        
+        function verificaSeImagemEhValida(){
+            $check = getimagesize($_FILES["capa"]["tmp_name"]);
+            if ($check !== false) {
+                return true;
+            } else {
+                echo msg_erro("O arquivo não é uma imagem válida.");
+                return false;
+            }
+        }
+
+        function verificaSeArquivoJaExiste($target_file){
+            if (file_exists($target_file)) {
+                echo msg_erro("O arquivo já existe.");
+                return false;
+            }
+            return true;
+        }
+
+        function verificaOTamanhoDoArquivo(){
+            if ($_FILES["capa"]["size"] > 512000) {//500kb
+                echo msg_erro("O arquivo é muito grande deve ter no máximo 500kb.");
+                return false;
+            } 
+            return true;
+        }
+
+        function verificaOFormatoDoArquivo($imageFileType){
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif") {
+                echo msg_erro("Apenas arquivos JPG, JPEG, PNG e GIF são permitidos.");
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+
+
         
