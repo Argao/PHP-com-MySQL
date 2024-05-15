@@ -22,10 +22,37 @@
                 if(!isset($_POST['usuario'])){
                     include "user-edit-form.php";
                 }else{
-                    echo msg_sucesso("Dados foram recebidos.");
-                }
-            }    
+                    $usuario = $_POST['usuario'] ?? null;
+                    $nome = $_POST['nome'] ?? null;
+                    $senha1 = $_POST['senha1'] ?? null;
+                    $senha2 = $_POST['senha2'] ?? null;
+                    $tipo = $_POST['tipo'] ?? null;
+
+                    $q = "UPDATE usuarios SET  usuario = '$usuario', nome = '$nome', tipo = '$tipo' ";
+
+                    if(empty($senha1) && empty($senha2)){
+                        echo msg_aviso("Senha foi mantida");
+                    }else{
+                        if(validaSenha($senha1,$senha2)){
+                            $senha = gerarHash($senha1);
+                            $q .= ", senha = '$senha' ";
+                        }else{
+                            echo msg_aviso("A senha anterior sera mantida");
+                        }
+
+                    }       
+                    $q .= " WHERE usuario = '" . $_SESSION['user'] . "'";
+                    if($banco->query($q)){
+                        echo msg_sucesso("Dados alterados com sucesso!");
+                        logout();
+                        echo msg_aviso("Por segurança faça o <a href='user-login.php'>login</a> novamente.");
+                    }else{
+                        echo msg_erro("Não foi possível alterar os dados!");
+                    }   
+                }    
+            }  
         ?>
+        <?php echo voltar();?>
     </main>
     <?php require_once"rodape.php";?>
 </body>
