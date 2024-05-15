@@ -163,6 +163,26 @@
             return true;
         }
 
+        function validaGenero($nome,$banco){
+            if(procuraGeneroNoBanco($nome,$banco)){
+                return true;
+            }
+            return false;
+        }
+
+        function procuraGeneroNoBanco($nome,$banco){
+            $q = "SELECT * FROM generos WHERE LOWER(genero) = LOWER('$nome')";
+            $busca = $banco->query($q);
+            if(!$busca){
+                return false;
+            }
+            if($busca->num_rows > 0){
+                echo msg_erro('Gênero já cadastrado!');
+                return false;
+            }
+            return true;
+        }
+
 
 
 
